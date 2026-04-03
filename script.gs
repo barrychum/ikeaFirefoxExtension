@@ -2,7 +2,9 @@ function doGet() {
   // 1. Search for the newest unread email from IKEA
   // Adjust the search query if IKEA uses a specific subject line
   //var threads = GmailApp.search('from:no.reply@ikea.com is:unread', 0, 1);
+
   var threads = GmailApp.search('from:no.reply@ikea.com subject:"Your one-time code to access your IKEA account" is:unread', 0, 1);
+  
   if (threads.length === 0) {
     return ContentService.createTextOutput(JSON.stringify({error: "No code found"})).setMimeType(ContentService.MimeType.JSON);
   }
